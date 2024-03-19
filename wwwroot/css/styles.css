@@ -601,9 +601,30 @@ hr {
 
 
 
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    .header-sticky.sticky-bar.sticky {
+        padding: 15px 0px
+    }
+}
 
+@media only screen and (min-width: 576px) and (max-width: 767px) {
+    .header-sticky.sticky-bar.sticky {
+        padding: 15px 0px
+    }
+}
 
+@media (max-width: 575px) {
+    .header-sticky.sticky-bar.sticky {
+        padding: 15px 0px
+    }
+}
 
+.mobile_menu {
+    position: absolute;
+    right: 0px;
+    width: 100%;
+    z-index: 99
+}
 
     .mobile_menu .slicknav_menu {
         background: transparent;
@@ -919,140 +940,7 @@ hr {
         margin-bottom: 3px
     }
 
-        .slider-area .dot-style .slick-dots li.slick-active button::before {
-            position: absolute;
-            content: "";
-            height: 25px;
-            width: 25px;
-            border: 1px solid #fff;
-            left: 50%;
-            margin: 0 auto;
-            text-align: center;
-            top: 44%;
-            transform: translateY(-48%) translateX(-48%);
-            border-radius: 50%;
-            line-height: 25px;
-            -webkit-transition: .4s;
-            -moz-transition: .4s;
-            -o-transition: .4s;
-            transition: .4s
-        }
 
-    .slider-area .dot-style .slick-dots button {
-        text-indent: -100000px;
-        height: 10px;
-        width: 10px;
-        border: 0;
-        padding: 0;
-        margin-right: 10px;
-        cursor: pointer;
-        border-radius: 50%;
-        margin-bottom: 15px;
-        background: #fff
-    }
-
-    .slider-area .dot-style .slick-dots .slick-active button {
-        background: #fff;
-        position: relative;
-        -webkit-transition: .4s;
-        -moz-transition: .4s;
-        -o-transition: .4s;
-        transition: .4s
-    }
-
-.slider-area .video-icon {
-    position: absolute;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    left: 0;
-    margin: 0 auto;
-    text-align: center
-}
-
-    .slider-area .video-icon a {
-        background: #6fd66c;
-        background: linear-gradient(90deg, #6fd66c 0%, #48c1b9 100%);
-        color: #fff;
-        width: 60px;
-        height: 60px;
-        display: inline-block;
-        text-align: center;
-        line-height: 60px;
-        border-radius: 50%
-    }
-
-        .slider-area .video-icon a::after {
-            position: absolute;
-            border: 70px solid rgba(111,214,108,0.3);
-            content: "";
-            border-radius: 50%;
-            left: -37px;
-            top: -38px;
-            right: 0;
-            z-index: -1;
-            background: #0000
-        }
-
-@media only screen and (min-width: 576px) and (max-width: 767px) {
-    .slider-area .video-icon a::after {
-        border: 50px solid rgba(111,214,108,0.1);
-        left: -19px;
-        top: -19px;
-        right: 0
-    }
-}
-
-@media (max-width: 575px) {
-    .slider-area .video-icon a::after {
-        border: 50px solid rgba(111,214,108,0.1);
-        left: -19px;
-        top: -19px;
-        right: 0
-    }
-}
-
-@media only screen and (min-width: 576px) and (max-width: 767px) {
-    .slider-area .video-icon a {
-        width: 60px;
-        height: 60px;
-        line-height: 60px
-    }
-}
-
-@media (max-width: 575px) {
-    .slider-area .video-icon a {
-        width: 60px;
-        height: 60px;
-        line-height: 60px
-    }
-}
-
-.slider-area .video-icon a i {
-    font-size: 18px;
-    line-height: 1;
-    position: relative;
-    right: -1px;
-    top: 3px
-}
-
-.slider-area .video-icon a.btn-icon {
-    position: relative
-}
-
-    .slider-area .video-icon a.btn-icon::before {
-        content: '';
-        display: inline-block;
-        position: absolute;
-        top: -2px;
-        left: -2px;
-        bottom: -2px;
-        right: -2px;
-        border-radius: inherit;
-        border: 1px solid #6fd66c;
-        -webkit-animation: btnIconRipple 2s cubic-bezier(0.23, 1, 0.32, 1) both infinite;
-        animation: btnIconRipple 2s cubic-bezier(0.23, 1, 0.32, 1) both infinite
-    }
 
 @-webkit-keyframes btnIconRipple {
     0% {
