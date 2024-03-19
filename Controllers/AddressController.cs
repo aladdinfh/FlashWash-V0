@@ -1,12 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using FlashWash.Data;
 using FlashWash.Models;
 using Microsoft.Extensions.Logging;
-using Azure;
-using Microsoft.AspNetCore.Http.HttpResults;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
-using System.Net;
 
 namespace FlashWash.Controllers
 {
@@ -15,20 +11,21 @@ namespace FlashWash.Controllers
         private readonly AppDbContext _db;
         private readonly ILogger<AddressController> _logger;
 
+        // Constructor to inject dependencies
         public AddressController(AppDbContext db, ILogger<AddressController> logger)
         {
             _db = db;
             _logger = logger;
         }
 
-        // GET: Address/Create
+        // GET: Address/Create - Display the form to create a new address
         [HttpGet]
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Address/Create
+        // POST: Address/Create - Handle the creation of a new address
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Create(Address address)
@@ -51,7 +48,7 @@ namespace FlashWash.Controllers
             return View(address);
         }
 
-        // GET: Address/Update/5
+        // GET: Address/Update/5 - Display the form to update an existing address
         [HttpGet]
         public IActionResult Update(int? id)
         {
@@ -74,7 +71,7 @@ namespace FlashWash.Controllers
             return View(address);
         }
 
-        // POST: Address/Update/5
+        // POST: Address/Update/5 - Handle the update of an existing address
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Update(int id, Address address)
@@ -125,4 +122,3 @@ namespace FlashWash.Controllers
         }
     }
 }
-
