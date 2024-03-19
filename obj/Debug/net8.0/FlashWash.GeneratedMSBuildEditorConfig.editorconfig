@@ -1,0 +1,211 @@
+is_global = true
+build_property.TargetFramework = net8.0
+build_property.TargetFramework = net8.0
+build_property.TargetPlatformMinVersion = 
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = FlashWash
+build_property.RootNamespace = FlashWash
+build_property.ProjectDir = C:\Users\MSI\Desktop\VS-Studio\FlashWash\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 8.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\MSI\Desktop\VS-Studio\FlashWash
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/MSI/Desktop/VS-Studio/FlashWash/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/MSI/Desktop/VS-Studio/FlashWash/Views/Offer/CreateOffer.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT2ZmZXJcQ3JlYXRlT2ZmZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/MSI/Desktop/VS-Studio/FlashWash/Views/Offer/CreateOfferTypes.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT2ZmZXJcQ3JlYXRlT2ZmZXJUeXBlcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/MSI/Desktop/VS-Studio/FlashWash/Views/Offer/GetAllOffers.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT2ZmZXJcR2V0QWxsT2ZmZXJzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/MSI/Desktop/VS-Studio/FlashWash/Views/Offer/GetAllOfferTypes.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT2ZmZXJcR2V0QWxsT2ZmZXJUeXBlcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/MSI/Desktop/VS-Studio/FlashWash/Views/Offer/GetOffersByType.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT2ZmZXJcR2V0T2ZmZXJzQnlUeXBlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/MSI/Desktop/VS-Studio/FlashWash/Views/Offer/GetOffersByWashStation.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT2ZmZXJcR2V0T2ZmZXJzQnlXYXNoU3RhdGlvbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/MSI/Desktop/VS-Studio/FlashWash/Views/Offer/UpdateOffer.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT2ZmZXJcVXBkYXRlT2ZmZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/MSI/Desktop/VS-Studio/FlashWash/Views/Offer/_CreateOfferType.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT2ZmZXJcX0NyZWF0ZU9mZmVyVHlwZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/MSI/Desktop/VS-Studio/FlashWash/Views/Offer/_NavbarWash.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT2ZmZXJcX05hdmJhcldhc2guY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/MSI/Desktop/VS-Studio/FlashWash/Views/Request/AllRequests.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVxdWVzdFxBbGxSZXF1ZXN0cy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/MSI/Desktop/VS-Studio/FlashWash/Views/Request/AllRequestsRWashStation.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVxdWVzdFxBbGxSZXF1ZXN0c1JXYXNoU3RhdGlvbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/MSI/Desktop/VS-Studio/FlashWash/Views/Request/CreateRequest.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVxdWVzdFxDcmVhdGVSZXF1ZXN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/MSI/Desktop/VS-Studio/FlashWash/Views/Request/_NavbarUser.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVxdWVzdFxfTmF2YmFyVXNlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/MSI/Desktop/VS-Studio/FlashWash/Views/Request/_NavbarWash.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVxdWVzdFxfTmF2YmFyV2FzaC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/MSI/Desktop/VS-Studio/FlashWash/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/MSI/Desktop/VS-Studio/FlashWash/Views/Shared/_Navbar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9OYXZiYXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/MSI/Desktop/VS-Studio/FlashWash/Views/Shared/_NavbarWash.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9OYXZiYXJXYXNoLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/MSI/Desktop/VS-Studio/FlashWash/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/MSI/Desktop/VS-Studio/FlashWash/Views/User/Dashboard.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxEYXNoYm9hcmQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/MSI/Desktop/VS-Studio/FlashWash/Views/User/LogReg.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxMb2dSZWcuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/MSI/Desktop/VS-Studio/FlashWash/Views/User/UpdateAddressView.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxVcGRhdGVBZGRyZXNzVmlldy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/MSI/Desktop/VS-Studio/FlashWash/Views/User/UpdateEmailView.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxVcGRhdGVFbWFpbFZpZXcuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/MSI/Desktop/VS-Studio/FlashWash/Views/User/UpdateNameView.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxVcGRhdGVOYW1lVmlldy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/MSI/Desktop/VS-Studio/FlashWash/Views/User/UpdatePasswordView.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxVcGRhdGVQYXNzd29yZFZpZXcuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/MSI/Desktop/VS-Studio/FlashWash/Views/User/UpdateTelephoneView.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxVcGRhdGVUZWxlcGhvbmVWaWV3LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/MSI/Desktop/VS-Studio/FlashWash/Views/User/ViewOneOffer.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxWaWV3T25lT2ZmZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/MSI/Desktop/VS-Studio/FlashWash/Views/User/_Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxfTG9naW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/MSI/Desktop/VS-Studio/FlashWash/Views/User/_NavbarUser.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxfTmF2YmFyVXNlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/MSI/Desktop/VS-Studio/FlashWash/Views/User/_Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxfUmVnaXN0ZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/MSI/Desktop/VS-Studio/FlashWash/Views/WashStation/DashboardWash.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV2FzaFN0YXRpb25cRGFzaGJvYXJkV2FzaC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/MSI/Desktop/VS-Studio/FlashWash/Views/WashStation/LogRegWash.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV2FzaFN0YXRpb25cTG9nUmVnV2FzaC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/MSI/Desktop/VS-Studio/FlashWash/Views/WashStation/UpdatePaymentOptionsView.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV2FzaFN0YXRpb25cVXBkYXRlUGF5bWVudE9wdGlvbnNWaWV3LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/MSI/Desktop/VS-Studio/FlashWash/Views/WashStation/UpdateWashStationAddressView.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV2FzaFN0YXRpb25cVXBkYXRlV2FzaFN0YXRpb25BZGRyZXNzVmlldy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/MSI/Desktop/VS-Studio/FlashWash/Views/WashStation/UpdateWashStationEmailView.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV2FzaFN0YXRpb25cVXBkYXRlV2FzaFN0YXRpb25FbWFpbFZpZXcuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/MSI/Desktop/VS-Studio/FlashWash/Views/WashStation/UpdateWashStationNameView.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV2FzaFN0YXRpb25cVXBkYXRlV2FzaFN0YXRpb25OYW1lVmlldy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/MSI/Desktop/VS-Studio/FlashWash/Views/WashStation/UpdateWashStationOwnerNameView.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV2FzaFN0YXRpb25cVXBkYXRlV2FzaFN0YXRpb25Pd25lck5hbWVWaWV3LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/MSI/Desktop/VS-Studio/FlashWash/Views/WashStation/UpdateWashstationPassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV2FzaFN0YXRpb25cVXBkYXRlV2FzaHN0YXRpb25QYXNzd29yZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/MSI/Desktop/VS-Studio/FlashWash/Views/WashStation/UpdateWashStationTelephoneView.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV2FzaFN0YXRpb25cVXBkYXRlV2FzaFN0YXRpb25UZWxlcGhvbmVWaWV3LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/MSI/Desktop/VS-Studio/FlashWash/Views/WashStation/UpdateWashStationTimeView.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV2FzaFN0YXRpb25cVXBkYXRlV2FzaFN0YXRpb25UaW1lVmlldy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/MSI/Desktop/VS-Studio/FlashWash/Views/WashStation/_LoginWash.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV2FzaFN0YXRpb25cX0xvZ2luV2FzaC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/MSI/Desktop/VS-Studio/FlashWash/Views/WashStation/_NavbarWash.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV2FzaFN0YXRpb25cX05hdmJhcldhc2guY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/MSI/Desktop/VS-Studio/FlashWash/Views/WashStation/_RegisterWash.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV2FzaFN0YXRpb25cX1JlZ2lzdGVyV2FzaC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/MSI/Desktop/VS-Studio/FlashWash/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/MSI/Desktop/VS-Studio/FlashWash/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/MSI/Desktop/VS-Studio/FlashWash/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-wbwu56sem0

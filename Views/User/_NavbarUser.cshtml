@@ -1,0 +1,58 @@
+﻿<nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark" style="font-family: sans-serif;">
+    <div class="container-fluid">
+        <a class="navbar-brand" asp-area="" asp-controller="User" asp-action="Dashboard">
+            <img src="~/lib/washlogo.jpg" alt="Your Image Alt Text" style="height: 70px; width: auto; border-radius:15px" />
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarColor01">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link " asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                </li>
+
+            </ul>
+
+            <!-- Dropdown for Updates -->
+            <ul class="navbar-nav">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="updatesDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Updates</a>
+                    <div class="dropdown-menu" aria-labelledby="updatesDropdown">
+                        <!-- Link to Update Password page -->
+                        <a class="dropdown-item" asp-area="" asp-controller="User" asp-action="UpdatePassword">Update Password</a>
+                        <!-- Link to Update Email page -->
+                        <a class="dropdown-item" asp-area="" asp-controller="User" asp-action="UpdateEmail">Update Email</a>
+                        <!-- Link to Update Name page -->
+                        <a class="dropdown-item" asp-area="" asp-controller="User" asp-action="UpdateName">Update Name</a>
+                        <!-- Link to Update Address page -->
+                        <a class="dropdown-item" asp-area="" asp-controller="User" asp-action="UpdateAddress">Update Address</a>
+                        <!-- Link to Update Telephone page -->
+                        <a class="dropdown-item" asp-area="" asp-controller="User" asp-action="UpdateTelephone">Update Telephone number</a>
+                    </div>
+                </li>
+            </ul>
+
+            <!-- Dropdown for All Requests -->
+            <ul class="navbar-nav">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="requestsDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">All Requests</a>
+                    <div class="dropdown-menu" aria-labelledby="requestsDropdown">
+                        <!-- Link to All Requests page -->
+                        <a class="dropdown-item" asp-area="" asp-controller="Request" asp-action="AllRequests">All Requests</a>
+                    </div>
+                </li>
+            </ul>
+
+            <!-- Logout button -->
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <form asp-action="Logout" asp-controller="User" method="post">
+                        <button class="btn btn-alert-success my-2 my-sm-0 w-100" type="submit">Logout</button>
+                    </form>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

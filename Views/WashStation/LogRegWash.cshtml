@@ -1,0 +1,16 @@
+﻿@{
+    WashStation WashStation = new();
+    LoginWashStation loginwashstation = new();
+}
+@await Html.PartialAsync("_Navbar")
+
+<div style=" padding:20px" class="container pt-5">
+    <div class="row">
+        <div class="col-lg-6 col-md-6 cl-sm-12">
+            @await Html.PartialAsync("_RegisterWash" ,  WashStation)
+        </div>
+        <div class="col-lg-6 col-md-6 cl-sm-12">
+            @await Html.PartialAsync("_LoginWash", loginwashstation)
+        </div>
+    </div>
+</div>

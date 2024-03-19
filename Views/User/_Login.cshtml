@@ -1,0 +1,21 @@
+﻿@model LoginUser
+
+<div class="container mt-5">
+    <div class="card shadow-lg p-3 mb-5 bg-white rounded">
+        <h1 class="text-center mb-4 text-primary text-bg-secondary p-4 font-weight-bold">Login</h1>
+        <form asp-action="Login" asp-controller="User" method="post">
+            <div class="form-group">
+                <label asp-for="LoginEmail" class="form-label">Email</label>
+                <input class="form-control" asp-for="LoginEmail" />
+                <span asp-validation-for="LoginEmail" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LoginPassword" class="form-label">Password</label>
+                <input class="form-control" asp-for="LoginPassword" type="password" />
+                <span asp-validation-for="LoginPassword" class="text-danger"></span>
+            </div>
+
+            <button type="submit" class="btn btn-success btn-lg btn-block mt-4">Login</button>
+        </form>
+    </div>
+</div>

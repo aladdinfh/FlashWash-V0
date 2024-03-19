@@ -1,0 +1,64 @@
+﻿<header>
+    <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark" style="font-family: sans-serif;">
+
+        <div class="container-fluid">
+            <a class="navbar-brand" asp-area="" asp-controller="WashStation" asp-action="DashboardWash">
+                <img src="~/lib/washlogo.jpg" alt="Your Image Alt Text" style="height: 70px; width: auto; border-radius:15px" />
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarColor01">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                    </li>
+
+
+                    <!-- Dropdown for Updates -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-white" href="#" id="updatesDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Updates</a>
+                        <div class="dropdown-menu" aria-labelledby="updatesDropdown">
+                            <a class="dropdown-item" asp-area="" asp-controller="WashStation" asp-action="UpdateWashstationPassword">Update Password</a>
+                            <!-- Link to Update Email page -->
+                            <a class="dropdown-item" asp-area="" asp-controller="WashStation" asp-action="UpdateWashStationEmail">Update Email</a>
+                            <!-- Link to Update Name page -->
+                            <a class="dropdown-item" asp-area="" asp-controller="WashStation" asp-action="UpdateWashStationName">Update Name</a>
+                            <!-- Link to Update Payment Options page -->
+                            <a class="dropdown-item" asp-area="" asp-controller="WashStation" asp-action="UpdatePaymentOptions">Update Payment Options</a>
+                            <!-- Link to Update Address page -->
+                            <a class="dropdown-item" asp-area="" asp-controller="WashStation" asp-action="UpdateWashStationAddress">Update Address</a>
+                            <!-- Link to Update Telephone page -->
+                            <a class="dropdown-item" asp-area="" asp-controller="WashStation" asp-action="UpdateWashStationTelephone">Update Telephone number</a>
+                            <!-- Link to Update The Shift page -->
+                            <a class="dropdown-item" asp-area="" asp-controller="WashStation" asp-action="UpdateWashStationTime">Update The Shift</a>
+                            <!-- Link to Update Owner Name page -->
+                            <a class="dropdown-item" asp-area="" asp-controller="WashStation" asp-action="UpdateWashStationOwnerName">Update Owner Name</a>
+                        </div>
+                    </li>
+
+                    <!-- Other Links -->
+                    <li class="nav-item">
+                        <a class="nav-link text-white" asp-area="" asp-controller="Offer" asp-action="GetAllOffers">Get All Offers</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" asp-area="" asp-controller="Request" asp-action="AllRequestsRWashStation">Get All Requests</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" asp-area="" asp-controller="Offer" asp-action="CreateOffer">Create Offer</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" asp-area="" asp-controller="Offer" asp-action="GetAllOfferTypes">Get All Offer Types</a>
+                    </li>
+
+                    <!-- Logout button -->
+                    <li class="nav-item">
+                        <form asp-action="LogoutWash" asp-controller="WashStation" method="post">
+                            <button class="btn btn-alert-success my-2 my-sm-0 w-100" type="submit">Logout</button>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>

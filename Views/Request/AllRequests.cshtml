@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Request>
+
+@await Html.PartialAsync("_NavbarUser")
+@{
+    ViewData["Title"] = "All Requests";
+}
+
+<div class="container mt-4">
+
+    <table class="table table-bordered table-hover">
+        <thead class="table-primary">
+            <tr>
+                <th>Request ID</th>
+                <th>User</th>
+                <th>Offer Title</th>
+                <th>Request Time</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var request in Model)
+            {
+                <tr>
+                    <td>@request.RequestId</td>
+                    <td>@request.User.FirstName @request.User.LastName</td>
+                    <td>@request.Offer.Title</td>
+                    <td>@request.StartTime</td>
+                    <td>@request.Status</td>
+                    <td>
+                        @if (request.Status == RequestStatus.Pending)
+                        {
+                            <form method="post" asp-action="CancelRequestUser" asp-route-requestId="@request.RequestId">
+                                <button type="submit" >Cancel</button>
+                            </form>
+                        }
+                        else if (request.Status == RequestStatus.Accepted)
+                        {
+                            <p class="text-success">Request Accepted</p>
+                          
+                        }
+                        else
+                        {
+                            <p class="text-muted">Request Completed/In Progress</p>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

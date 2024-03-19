@@ -1,0 +1,59 @@
+﻿@model Offer
+@{
+    int id = (int)Context.Session.GetInt32("washStationId");
+}
+@await Html.PartialAsync("_NavbarWash")
+
+
+<form asp-action="CreateOffer" method="post" enctype="multipart/form-data" class="mt-4">
+    <input type="hidden" asp-for="WashStationId" value="@id" />
+
+    <div class="mb-3">
+        <label style="    font-family: sans-serif;" for="Title" class="form-label">Title</label>
+        <input asp-for="Title" class="form-control" />
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label style="    font-family: sans-serif;" for="Description" class="form-label">Description</label>
+        <input asp-for="Description" class="form-control" />
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label style="    font-family: sans-serif;" for="ImageUrl" class="form-label">Image URL</label>
+        <input asp-for="ImageUrl" class="form-control" />
+        <span asp-validation-for="ImageUrl" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label style="    font-family: sans-serif;" for="DurationMinutes" class="form-label">Duration (Minutes)</label>
+        <input asp-for="DurationMinutes" class="form-control" />
+        <span asp-validation-for="DurationMinutes" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label style="    font-family: sans-serif;" for="Price" class="form-label">Price</label>
+        <input asp-for="Price" class="form-control" />
+        <span asp-validation-for="Price" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label style="    font-family: sans-serif;" for="OfferTypeId" class="form-label">Offer Type</label>
+        <select asp-for="OfferTypeId" class="form-select">
+            <option value="">Select Offer Type</option>
+            @foreach (var offerType in ViewBag.Ids)
+            {
+                <option value="@offerType.OfferTypeId">@offerType.Title</option>
+            }
+        </select>
+        <span asp-validation-for="OfferTypeId" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-SecondPart" style="border: 1px solid black ;  font-family: sans-serif; ">Create Offer</button>
+</form>
+
+<hr />
+
+
+

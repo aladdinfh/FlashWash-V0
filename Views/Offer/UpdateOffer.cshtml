@@ -1,0 +1,25 @@
+﻿@model Offer
+@await Html.PartialAsync("_NavbarWash")
+
+<form asp-action="UpdateOffer" asp-route-id="@Model.OfferId" asp-controller="Offer" method="post">
+    <div>
+        <label style="    font-family: sans-serif;" class="form-label" asp-for="Title">Title:</label>
+        <input asp-for="Title" class="form-control" /> <span asp-validation-for="Title"></span>
+    </div>
+    <div>
+        <label style="    font-family: sans-serif;" class="form-label" asp-for="Description">Description:</label>
+        <input asp-for="Description" class="form-control" /> <span asp-validation-for="Description"></span>
+    </div>
+    <div>
+        <label style="    font-family: sans-serif; " class="form-label" asp-for="Price">Price:</label>
+        <input asp-for="Price" type="number" class="form-control" /> <span asp-validation-for="Price"></span>
+    </div>
+    <div>
+        <label style="    font-family: sans-serif;" class="form-label" asp-for="ImageUrl">ImageUrl:</label>
+        <input asp-for="ImageUrl" class="form-control" /> <span asp-validation-for="ImageUrl"></span>
+    </div>
+        <button type="submit" class="btn btn-SecondPart" style="border: 1px solid black  ;     font-family: sans-serif;">Update Offer </button>
+
+</form>
+
+  

@@ -1,0 +1,55 @@
+﻿@model List<Request>
+
+@{
+    ViewData["Title"] = "All Requests";
+}
+@await Html.PartialAsync("_NavbarWash")
+
+    <style>
+             h2 {
+            color: #343a40;
+            text-align: center;
+        }
+    </style>
+
+    <div class="container mt-4">
+        <h2 class="mb-4">All Requests</h2>
+
+        <table class="table table-bordered table-hover">
+            <thead class="table-primary">
+                <tr>
+                    <th>User</th>
+                    <th>Offer</th>
+                    <th>Start Time</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var request in Model)
+                {
+                    <tr>
+                        <td>@request.User.FirstName @request.User.LastName</td>
+                        <td>@request.Offer.Title</td>
+                        <td>@request.StartTime</td>
+                        <td>@request.Status</td>
+                        <td>
+                            @if (request.Status != RequestStatus.Accepted)
+                            {
+                                <form method="post" asp-action="CancelRequest" asp-route-requestId="@request.RequestId">
+                                    <button type="submit" class="btn btn-danger">Cancel</button>
+                                </form>
+                            }
+
+                            <form method="post" asp-action="AcceptRequest" asp-route-requestId="@request.RequestId">
+                                <button type="submit" class="btn btn-success">Accept</button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+
+

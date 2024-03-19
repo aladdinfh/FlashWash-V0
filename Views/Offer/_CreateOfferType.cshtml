@@ -1,0 +1,13 @@
+﻿@model OfferType
+<div class="container mt-4">
+    <h2 style="font-size: x-large ; color: black ; margin-bottom:10p  ; font-family: sans-serif;">Create New Offer Type</h2>
+
+    <form asp-action="CreateOfferType" asp-controller="Offer" method="post" class="mb-4">
+        <div class="mb-3">
+            <label style="    font-family: sans-serif;" asp-for="Title" class="form-label">Title</label>
+            <input asp-for="Title" class="form-control" />
+            <span asp-validation-for="Title" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-SecondPart" style="border: 1px solid black ; font-family: sans-serif;">Create Offer tyype </button>
+    </form>
+</div>

@@ -1,0 +1,17 @@
+﻿@model TelephoneUpdateViewModel
+@await Html.PartialAsync("_NavbarUser")
+
+
+
+<h2>@ViewData["Title"]</h2>
+
+<div>
+    <form asp-action="UpdateTelephone" method="post">
+        <div  class="form-group">
+            <label style="font-family: sans-serif;" asp-for="Telephone"></label>
+            <input asp-for="Telephone" class="form-control" />
+            <span asp-validation-for="Telephone" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-SecondPart" style="border: 1px solid black ;  font-family: sans-serif; margin-top:10px "> Update Your Telephone Number</button>
+    </form>
+</div>

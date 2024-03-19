@@ -1,0 +1,74 @@
+﻿@model DashboardViewModel
+
+@await Html.PartialAsync("_NavbarUser")
+<link href="./css/DashboardUser.css" rel="stylesheet" />
+
+<div class="container mt-5" style="font-family: sans-serif;">
+    <div class="card">
+        <div class="card-header text-white" style="background-color: #30A4E7;">
+            User Information
+        </div>
+        <div class="card-body">
+            @if (Model.User != null)
+            {
+                <h5 class="card-title">Welcome to the Dashboard, @Model.User.FirstName!</h5>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><strong>Last Name:</strong> @Model.User.LastName</li>
+                    <li class="list-group-item"><strong>Telephone:</strong> @Model.User.Telephone</li>
+                    <li class="list-group-item"><strong>Zip Code:</strong> @Model.User.Address.PostalCode</li>
+                    <li class="list-group-item"><strong>Street:</strong> @Model.User.Address.Street</li>
+                    <li class="list-group-item"><strong>City:</strong> @Model.User.Address.City</li>
+                </ul>
+            }
+            else
+            {
+                <p class="card-text">No user information available.</p>
+            }
+        </div>
+    </div>
+</div>
+
+<div class="CardOfferuser" style="display: flex; flex-wrap: wrap; ">
+    <div class="AllOffersTitle" style="width: 100%; text-align: center; margin-bottom: 20px;">
+        <h1 style="font-family: sans-serif; margin-top : 20px ; font-weight:bold">Available Offers</h1>
+    </div>
+
+    @foreach (var wash in Model.WashStations)
+    {
+        @foreach (var offer in wash.Offers)
+        {
+            <div class="WashStationCard" style="flex: 0 0 300px; margin: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); border-radius: 10px; overflow: hidden; padding: 10px;">
+                <div class="WashStationName" style="display: flex; flex-direction: row; justify-content: space-around; align-items: center; padding: 5px; width: 100%; height: 120px;">
+                    <h3 class="text-l font-medium" style="font-family: sans-serif; margin-bottom: 10px;">
+                        @wash.Name
+                    </h3>
+                    <img class="imgoffer" style="width: 100px; height: 100px; border-radius: 10px;" src="@offer.ImageUrl" alt="Alternate Text" />
+                </div>
+
+                <!-- ... Your existing code ... -->
+                <!-- ... Your existing code ... -->
+
+                <div class="Cardofferinfo" style="display: flex; flex-direction: column; justify-content: center; margin-bottom: 10px; width: 100%;">
+                    <ul style="font-family: sans-serif; margin: 0; padding: 0; list-style-type: none;">
+                        <li style="margin-bottom: 5px;"><span style="color: #3498db; font-weight: bold;">Offer Description:</span> @offer.Description</li>
+                        <li style="margin-bottom: 5px;"><span style="color: #3498db; font-weight: bold;">Price:</span> @offer.Price TND</li>
+                    </ul>
+
+                    <ul style="font-family: sans-serif; margin: 0; padding: 0; list-style-type: none;">
+                        <li style="margin-bottom: 5px;"><span style="color: #3498db; font-weight: bold;">Morning Shift:</span> @wash.MorningStartTime - @wash.MorningEndTime</li>
+                        <li style="margin-bottom: 5px;"><span style="color: #3498db; font-weight: bold;">Evening Shift:</span> @wash.EveningStartTime - @wash.EveningEndTime</li>
+                    </ul>
+                </div>
+
+
+                <!-- ... Your existing code ... -->
+                <!-- ... Your existing code ... -->
+
+                <form asp-controller="User" asp-action="ViewOneOffer" method="get">
+                    <input type="hidden" name="offerId" value="@offer.OfferId" />
+                    <button type="submit" class="btn btn-success">View One</button>
+                </form>
+            </div>
+        }
+    }
+</div>

@@ -1,0 +1,36 @@
+﻿@model UpdatePaymentOptionsViewModel
+@await Html.PartialAsync("_NavbarWash")
+
+
+@{
+    ViewData["Title"] = "Update Payment Options";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form asp-action="UpdatePaymentOptions" method="post">
+    <div class="form-group">
+        <div class="form-check">
+            <input class="form-check-input" asp-for="AcceptCreditCard" />
+            <label style=" font-family: sans-serif; " class="form-check-label" asp-for="AcceptCreditCard">Accept Credit Card</label>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="form-check">
+            <input class="form-check-input" asp-for="AcceptCash" />
+            <label style=" font-family: sans-serif; " class="form-check-label" asp-for="AcceptCash">Accept Cash</label>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="form-check">
+            <input class="form-check-input" asp-for="AcceptMobilePayment" />
+            <label style=" font-family: sans-serif; " class="form-check-label" asp-for="AcceptMobilePayment">Accept Mobile Payment</label>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-SecondPart" style="border: 1px solid black;  font-family: cursive;  ">Update Your Payment Options </button>
+    </div>
+</form>

@@ -1,0 +1,62 @@
+﻿@model User
+<div class="container mt-5">
+    <div class="card shadow-lg p-3 mb-5 bg-white rounded">
+        <h1 class="text-center mb-4 text-primary text-bg-secondary p-4 font-weight-bold">Join Our FlashWash Network</h1>
+        <form asp-action="Register" asp-controller="User" method="post">
+            <div class="form-group">
+                <label asp-for="FirstName" class="form-label">First Name</label>
+                <input class="form-control" asp-for="FirstName" />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LastName" class="form-label">Last Name</label>
+                <input class="form-control" asp-for="LastName" />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="form-label">Email</label>
+                <input class="form-control" asp-for="Email" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password" class="form-label">Password</label>
+                <input class="form-control" asp-for="Password" type="password" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ConfirmPW" class="form-label">Confirm Password</label>
+                <input class="form-control" asp-for="ConfirmPW" type="password" />
+                <span asp-validation-for="ConfirmPW" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Telephone" class="form-label">Telephone</label>
+                <input class="form-control" asp-for="Telephone" />
+                <span asp-validation-for="Telephone" class="text-danger"></span>
+            </div>
+
+            <!-- Address fields -->
+            <div class="form-group">
+                <label asp-for="Address.Street" class="form-label">Street</label>
+                <input class="form-control" asp-for="Address.Street" />
+                <span asp-validation-for="Address.Street" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Address.City" class="form-label">City</label>
+                <input class="form-control" asp-for="Address.City" />
+                <span asp-validation-for="Address.City" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Address.State" class="form-label">State</label>
+                <input class="form-control" asp-for="Address.State" />
+                <span asp-validation-for="Address.State" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Address.PostalCode" class="form-label">Postal Code</label>
+                <input class="form-control" asp-for="Address.PostalCode" />
+                <span asp-validation-for="Address.PostalCode" class="text-danger"></span>
+            </div>
+
+            <button type="submit" class="btn btn-success btn-lg btn-block mt-4">Register</button>
+        </form>
+    </div>
+</div>

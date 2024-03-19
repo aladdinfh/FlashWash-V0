@@ -1,0 +1,22 @@
+﻿@model NameUpdateViewModel
+@await Html.PartialAsync("_NavbarUser")
+
+
+
+<form style="margin-top:10px" asp-action="UpdateName" method="post">
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <div class="form-group">
+        <label style="font-family: sans-serif;" asp-for="FirstName"></label>
+        <input asp-for="FirstName" class="form-control" />
+        <span asp-validation-for="FirstName" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label style="font-family: sans-serif;" asp-for="LastName"></label>
+        <input asp-for="LastName" class="form-control" />
+        <span asp-validation-for="LastName" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-SecondPart" style="border: 1px solid black ;  font-family: sans-serif; margin-top:10px "> Update Your Name</button>
+</form>

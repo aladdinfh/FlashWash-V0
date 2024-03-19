@@ -1,0 +1,15 @@
+﻿@model OfferViewModel
+@await Html.PartialAsync("_NavbarWash")
+
+<div class="container mt-4">
+    <h2>Create New Offer Type</h2>
+
+    <form asp-action="CreateOfferType" method="post" class="mb-4">
+        <div class="mb-3">
+            <label asp-for="OfferType.Title" class="form-label">Title</label>
+            <input asp-for="OfferType.Title" class="form-control" />
+            <span asp-validation-for="OfferType.Title" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-SecondPart" style="border: 1px solid black ">Create Offer tyype </button>
+    </form>
+</div>

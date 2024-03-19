@@ -1,0 +1,109 @@
+﻿@model WashStation
+
+<div class="container mt-5">
+    <div class="card shadow-lg p-3 mb-5 bg-white rounded">
+        <h1 class="text-center mb-4 text-primary text-bg-secondary p-4 font-weight-bold">Join Our Wash Station Network</h1>
+        <form asp-action="RegisterWash" asp-controller="WashStation" method="post">
+            <div class="form-group">
+                <label asp-for="Name" class="form-label">Station Name</label>
+                <input class="form-control" asp-for="Name" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OwnerName" class="form-label">Owner Name</label>
+                <input class="form-control" asp-for="OwnerName" />
+                <span asp-validation-for="OwnerName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="form-label">Email</label>
+                <input class="form-control" asp-for="Email" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password" class="form-label">Password</label>
+                <input class="form-control" asp-for="Password" type="password" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ConfirmPW" class="form-label">Confirm Password</label>
+                <input class="form-control" asp-for="ConfirmPW" type="password" />
+                <span asp-validation-for="ConfirmPW" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Telephone" class="form-label">Telephone</label>
+                <input class="form-control" asp-for="Telephone" />
+                <span asp-validation-for="Telephone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MorningStartTime" class="form-label">Morning Start Time</label>
+                <input class="form-control" asp-for="MorningStartTime" type="time" />
+                <span asp-validation-for="MorningStartTime" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="MorningEndTime" class="form-label">Morning End Time</label>
+                <input class="form-control" asp-for="MorningEndTime" type="time" />
+                <span asp-validation-for="MorningEndTime" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="EveningStartTime" class="form-label">Evening Start Time</label>
+                <input class="form-control" asp-for="EveningStartTime" type="time" />
+                <span asp-validation-for="EveningStartTime" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="EveningEndTime" class="form-label">Evening End Time</label>
+                <input class="form-control" asp-for="EveningEndTime" type="time" />
+                <span asp-validation-for="EveningEndTime" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <div class="form-check">
+                    <input class="form-check-input" asp-for="AcceptCreditCard" type="checkbox" />
+                    <label class="form-check-label" asp-for="AcceptCreditCard">Accept Credit Card</label>
+                </div>
+                <span asp-validation-for="AcceptCreditCard" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <div class="form-check">
+                    <input class="form-check-input" asp-for="AcceptCash" type="checkbox" />
+                    <label class="form-check-label" asp-for="AcceptCash">Accept Cash</label>
+                </div>
+                <span asp-validation-for="AcceptCash" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <div class="form-check">
+                    <input class="form-check-input" asp-for="AcceptMobilePayment" type="checkbox" />
+                    <label class="form-check-label" asp-for="AcceptMobilePayment">Accept Mobile Payment</label>
+                </div>
+                <span asp-validation-for="AcceptMobilePayment" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Address.Street" class="form-label">Street</label>
+                <input class="form-control" asp-for="Address.Street" />
+                <span asp-validation-for="Address.Street" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Address.City" class="form-label">City</label>
+                <input class="form-control" asp-for="Address.City" />
+                <span asp-validation-for="Address.City" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Address.State" class="form-label">State</label>
+                <input class="form-control" asp-for="Address.State" />
+                <span asp-validation-for="Address.State" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Address.PostalCode" class="form-label">Postal Code</label>
+                <input class="form-control" asp-for="Address.PostalCode" />
+                <span asp-validation-for="Address.PostalCode" class="text-danger"></span>
+            </div>
+
+            <button type="submit" class="btn btn-success btn-lg btn-block mt-4">Register</button>
+        </form>
+    </div>
+</div>

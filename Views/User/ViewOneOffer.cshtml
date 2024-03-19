@@ -1,0 +1,18 @@
+﻿@model Offer
+
+@await Html.PartialAsync("_NavbarUser")
+
+<<div class="OfferDetailsCard" style="max-width: 500px; margin: 20px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); border-radius: 10px; overflow: hidden; padding:10px; font-family: sans-serif;">
+    <div class="OfferDetails" style="padding: 20px;">
+        <p><span style="color: #3498db; font-weight: bold;">Title:</span> @Model.Title</p>
+        <p><span style="color: #3498db; font-weight: bold;">Price:</span> @Model.Price</p>
+        <p><span style="color: #3498db; font-weight: bold;">Description:</span> @Model.Description</p>
+        <img src="@Model.ImageUrl" />
+    </div>
+
+
+    <div style="display: flex; justify-content: center; margin-top: 10px;">
+        <a class="btn btn-secondary" asp-controller="User" asp-action="Dashboard">Back to Dashboard</a>
+        <a class="btn btn-success" asp-action="CreateRequest" asp-controller="Request" asp-route-offerId="@Model.OfferId" style="margin-left: 10px;">Send Request</a>
+    </div>
+</div>

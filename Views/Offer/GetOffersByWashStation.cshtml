@@ -1,0 +1,19 @@
+﻿@model List<FlashWash.Models.Offer>
+@await Html.PartialAsync("_NavbarWash")
+
+<h2>Offers by Wash Station</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Title</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var offer in Model)
+        {
+            <tr>
+                <td>@offer.Title</td>
+            </tr>
+        }
+    </tbody>
+</table>

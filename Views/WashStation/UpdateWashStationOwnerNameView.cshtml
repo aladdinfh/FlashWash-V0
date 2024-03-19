@@ -1,0 +1,14 @@
+﻿@model UpdateOwnerNameViewModel
+@await Html.PartialAsync("_NavbarWash")
+
+
+
+<form asp-action="UpdateWashStationOwnerName" method="post">
+    <div class="mb-3">
+        <label for="Email" class="form-label" style="font-family: sans-serif;">Owner Name</label>
+        <input type="text" asp-for="OwnerName" class="form-control" style="font-family: sans-serif; border: 1px solid #ced4da;" />
+        <span asp-validation-for="OwnerName" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-SecondPart" style="border: 1px solid black;  font-family: sans-serif; margin-top:5px ">Update The Owner Name </button>
+</form>

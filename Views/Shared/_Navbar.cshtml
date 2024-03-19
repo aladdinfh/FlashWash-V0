@@ -1,0 +1,28 @@
+﻿<nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark" style="font-family: cursive;  ">
+    <div class="container-fluid">
+        <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+            <img src="~/lib/washlogo.jpg" alt="Your Image Alt Text" style="height: 70px; width: auto; border-radius:15px" />
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarColor01">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link active" asp-area="" asp-controller="Home" asp-action="Index">
+                        Home
+                        <span class="visually-hidden">(current)</span>
+                    </a>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Connect</a>
+                    <div class="dropdown-menu custom-dropdown-menu">
+                        <a class="dropdown-item" asp-area="" asp-controller="User" asp-action="LogReg">user</a>
+                        <a class="dropdown-item" asp-area="" asp-controller="WashStation" asp-action="LogRegWash">Wash <br /> station</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

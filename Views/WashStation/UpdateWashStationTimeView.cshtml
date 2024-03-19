@@ -1,0 +1,32 @@
+﻿@model UpdateTimeViewModel
+@await Html.PartialAsync("_NavbarWash")
+
+
+<h2>Update Wash Station Time Slots</h2>
+
+<form asp-action="UpdateWashStationTime" method="post">
+    <div class="mb-3">
+        <label for="Email" class="form-label" style="font-family: sans-serif;">Morning Start </label>
+        <input type="time" asp-for="MorningStartTime" class="form-control" style="font-family: sans-serif; border: 1px solid #ced4da;" />
+        <span asp-validation-for="MorningStartTime" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label for="Email" class="form-label" style="font-family: sans-serif;">Morning EndTime</label>
+        <input type="time" asp-for="MorningEndTime" class="form-control" style="font-family: sans-serif; border: 1px solid #ced4da;" />
+        <span asp-validation-for="MorningEndTime" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label for="Email" class="form-label" style="font-family: sans-serif;">Evening StartTime</label>
+        <input type="time" asp-for="EveningStartTime" class="form-control" style="font-family: sans-serif; border: 1px solid #ced4da;" />
+        <span asp-validation-for="EveningStartTime" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label for="Email" class="form-label" style="font-family: sans-serif;">Evening EndTime</label>
+        <input type="time" asp-for="EveningEndTime" class="form-control" style="font-family: sans-serif; border: 1px solid #ced4da;" />
+        <span asp-validation-for="EveningEndTime" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-SecondPart" style="border: 1px solid black;  font-family: sans-serif; margin-top:5px ">Update Working Hours </button>
+</form>
