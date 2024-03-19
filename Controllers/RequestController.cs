@@ -1,38 +1,43 @@
-﻿// Import necessary namespaces
+// Import necessary namespaces
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using FlashWash.Data;
 using FlashWash.Models;
 
+// Define the RequestController class
 public class RequestController : Controller
 {
     private readonly AppDbContext _db;
 
+    // Constructor to initialize the controller with dependencies
     public RequestController(AppDbContext db)
     {
         _db = db;
     }
 
-
-
-    [SessionCheck]
-
+    // Action method to display all requests (accessible to all users)
+    [SessionCheck] // Custom action filter to check session
     public IActionResult AllRequests()
     {
+        // Retrieve all requests from the database including related offer and user information and pass them to the view
         var requests = _db.Requests.Include(r => r.Offer).Include(o => o.User).ToList();
         return View(requests);
     }
-    [WashStationSessionCheck]
 
+    // Action method to display all requests associated with a specific wash station (accessible to wash station users)
+    [WashStationSessionCheck] // Custom action filter to check session
     public IActionResult AllRequestsRWashStation()
     {
+        // Retrieve the wash station id from session
         int? washStationId = HttpContext.Session.GetInt32("washStationId");
 
+        // Redirect to login/register page if wash station id is not found in session
         if (washStationId == null)
         {
             return RedirectToAction("LogRegWash", "WashStation");
         }
 
+        // Retrieve requests associated with the current wash station including related user and offer information and pass them to the view
         var requests = _db.Requests
             .Include(r => r.User)
             .Include(r => r.Offer)
@@ -43,163 +48,145 @@ public class RequestController : Controller
         return View(requests);
     }
 
+    // Action method to display the form for creating a request (HTTP GET)
     [HttpGet]
-    [SessionCheck]
-
+    [SessionCheck] // Custom action filter to check session
     public IActionResult CreateRequest(int offerId)
     {
+        // Retrieve the user id from session
         int userId = (int)HttpContext.Session.GetInt32("userId");
 
         // Check if the user has already sent a request for this offer
         var existingRequest = _db.Requests.FirstOrDefault(r => r.UserId == userId && r.OfferId == offerId);
 
-   
+        // Pass a flag indicating whether there is an existing request for this offer to the view
         ViewBag.HasExistingRequest = existingRequest != null;
 
+        // Create a new request object and pass it to the view
         Request newRequest = new() { OfferId = offerId, UserId = userId };
         return View(newRequest);
     }
 
-
-
+    // Action method to handle the submission of a request (HTTP POST)
     [HttpPost]
-    [SessionCheck]
-    //[ValidateAntiForgeryToken]
+    [SessionCheck] // Custom action filter to check session
+    [ValidateAntiForgeryToken] // Protects against Cross-Site Request Forgery (CSRF) attacks
     public IActionResult SendRequest(Request request)
     {
+        // Retrieve the user id from session
         int userId = (int)HttpContext.Session.GetInt32("userId");
 
         // Use RequestCheck method to validate the request
         bool isValid = RequestCheck(request);
 
-        //Console.WriteLine($"-----------------------\nRequest Created\nOfferId : {request.OfferId}\nUserId:{userId}\nStart Time: {request.StartTime}\nIs Valid : {isValid}\n------------------------------------------------------------------");
-
         if (isValid)
         {
-            Console.WriteLine("TRUEEEEEEEEEEEEEEE");
+            // If the request is valid, add it to the database and redirect to the all requests page
             _db.Requests.Add(request);
             _db.SaveChanges();
             return RedirectToAction("AllRequests");
         }
 
-        // Redirect to "CreateRequest" with offerId if the request is not valid
+        // If the request is not valid, redirect to the create request page with the offerId
         return RedirectToAction("CreateRequest", new { offerId = request.OfferId });
     }
 
-
-
+    // Method to validate a request
     private bool RequestCheck(Request request)
     {
-        if (request == null)
-            return false;
-        if (request.StartTime < DateTime.Now)
+        // Check if the request is null or if the start time is in the past
+        if (request == null || request.StartTime < DateTime.Now)
         {
             return false;
         }
         else
         {
+            // Retrieve the offer associated with the request from the database
             Offer offer = _db.Offers
                 .Include(o => o.Requests)
                 .Include(o => o.WashStation)
                 .FirstOrDefault(o => o.OfferId == request.OfferId);
-            //Console.WriteLine($"*********************************************\nRequests From DB : {offer.Requests.Count()}\n*******************************************");
-            //Console.WriteLine($"+++++++++++++++++++++++++++++++++++++++++++++++++++\nRequest Start Time: {request.StartTime.ToString()}\n+++++++++++++++++++++++++++++++++++++++++++++++++++");
 
+            // Retrieve the hours and minutes from the request start time
             int hours = request.StartTime.Hour;
             int minutes = request.StartTime.Minute;
             TimeSpan ts = new TimeSpan(hours, minutes, 0);
-            //Console.WriteLine($"+++++++++++++++++++++++++++++++++++++++++++++++++++\nTime Span : {ts}\n+++++++++++++++++++++++++++++++++++++++++++++++++++");
-            if (ts < offer.WashStation.MorningStartTime || ts > offer.WashStation.EveningEndTime)
+
+            // Check if the request start time is within the operating hours of the associated wash station and if there are no overlapping requests
+            if (ts < offer.WashStation.MorningStartTime || ts > offer.WashStation.EveningEndTime ||
+                (ts > offer.WashStation.MorningEndTime && ts < offer.WashStation.EveningStartTime) ||
+                offer.Requests.Any(r => r.StartTime < request.StartTime.AddMinutes(offer.DurationMinutes) && r.StartTime > request.StartTime.AddMinutes(-offer.DurationMinutes)))
             {
-                Console.WriteLine("FALSE===1===");
-                return false;
-            }
-            else if (ts > offer.WashStation.MorningEndTime && ts < offer.WashStation.EveningStartTime)
-            {
-                Console.WriteLine("FALSE===2===");
-                return false;
-            }
-            else if (offer.Requests.Any(r => r.StartTime < request.StartTime.AddMinutes(offer.DurationMinutes) && r.StartTime > request.StartTime.AddMinutes(-offer.DurationMinutes)))
-            {
-                Console.WriteLine("FALSE===3===");
                 return false;
             }
         }
         return true;
     }
 
+    // Action method to handle the acceptance of a request by a wash station
     [HttpPost]
-    [WashStationSessionCheck]
-
-
-    [ValidateAntiForgeryToken]
+    [WashStationSessionCheck] // Custom action filter to check session
+    [ValidateAntiForgeryToken] // Protects against Cross-Site Request Forgery (CSRF) attacks
     public IActionResult AcceptRequest(int requestId)
     {
+        // Retrieve the request from the database
         var request = _db.Requests.FirstOrDefault(r => r.RequestId == requestId);
 
+        // If the request exists and is pending, update its status to accepted
         if (request != null && request.Status == RequestStatus.Pending)
         {
-            // Code to accept the request
             request.Status = RequestStatus.Accepted;
             _db.SaveChanges();
         }
 
-        return RedirectToAction("DashboardWash" , "WashStation");
+        return RedirectToAction("DashboardWash", "WashStation");
     }
 
+    // Action method to handle the cancellation of a request by a wash station
     [HttpPost]
-    [WashStationSessionCheck]
-    [ValidateAntiForgeryToken]
+    [WashStationSessionCheck] // Custom action filter to check session
+    [ValidateAntiForgeryToken] // Protects against Cross-Site Request Forgery (CSRF) attacks
     public IActionResult CancelRequest(int requestId)
     {
+        // Retrieve the request from the database
         var request = _db.Requests.FirstOrDefault(r => r.RequestId == requestId);
 
+        // If the request exists and is pending, remove it from the database
         if (request != null && request.Status == RequestStatus.Pending)
         {
-            // Code to cancel the request
             _db.Requests.Remove(request);
             _db.SaveChanges();
-
-            // Optionally, you may want to update the availability or status of the WashStation
-            // or perform any additional cleanup.
-
             return RedirectToAction("AllRequestsRWashStation", "WashStation");
         }
         else
         {
-            // The request cannot be canceled because it's not in a cancelable state
-            // (e.g., it's already accepted or completed).
+            // If the request cannot be canceled, return an error message
             ModelState.AddModelError(string.Empty, "This request cannot be canceled.");
-            return RedirectToAction("DashboardWash", "WashStation"); // You may want to redirect to a different action or handle this case accordingly.
+            return RedirectToAction("DashboardWash", "WashStation");
         }
     }
 
-
+    // Action method to handle the cancellation of a request by a user
     [HttpPost]
-    [SessionCheck]  // Assuming you have a similar attribute for client session check
-    [ValidateAntiForgeryToken]
+    [SessionCheck] // Custom action filter to check session
+    [ValidateAntiForgeryToken] // Protects against Cross-Site Request Forgery (CSRF) attacks
     public IActionResult CancelRequestUser(int requestId)
     {
+        // Retrieve the request from the database
         var request = _db.Requests.FirstOrDefault(r => r.RequestId == requestId);
 
+        // If the request exists and is pending, remove it from the database
         if (request != null && request.Status == RequestStatus.Pending)
         {
-            // Code to cancel the request
             _db.Requests.Remove(request);
             _db.SaveChanges();
-
-            // Optionally, you may want to perform any additional cleanup.
-
-            return RedirectToAction("Dashboard", "User"); // Adjust the action and controller names accordingly
+            return RedirectToAction("Dashboard", "User"); // Redirect to user dashboard
         }
         else
         {
-            // The request cannot be canceled because it's not in a cancelable state
-            // (e.g., it's already accepted or completed).
+            // If the request cannot be canceled, return an error message
             ModelState.AddModelError(string.Empty, "This request cannot be canceled.");
-            return RedirectToAction("AllRequests"); // You may want to redirect to a different action or handle this case accordingly.
+            return RedirectToAction("AllRequests"); // Redirect to all requests page
         }
     }
-
-
 }
