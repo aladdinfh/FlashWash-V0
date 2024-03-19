@@ -1,15 +1,16 @@
-﻿using FlashWash.Data;
+using FlashWash.Data;
 using FlashWash.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
+// Controller for managing user actions such as registration, login, updating profile, etc.
 public class UserController : Controller
 {
     private readonly AppDbContext _db;
     private readonly ILogger<UserController> _logger;
 
-
+    // Constructor to initialize the controller with required dependencies
     public UserController(AppDbContext db, ILogger<UserController> logger)
     {
         _db = db;
@@ -20,12 +21,10 @@ public class UserController : Controller
     [HttpGet]
     public IActionResult LogReg()
     {
+        // Check if user is already logged in, if so, redirect to Dashboard
         int? userId = HttpContext.Session.GetInt32("userId");
-
-        // If logged in, redirect to Dashboard
         return userId.HasValue ? RedirectToAction("Dashboard") : View();
     }
-
 
     // POST: Register User
     [HttpPost]
@@ -33,6 +32,7 @@ public class UserController : Controller
     {
         if (ModelState.IsValid)
         {
+            // Check if the user's email already exists in the database
             var existingUser = _db.Users.FirstOrDefault(w => w.Email == user.Email);
             if (existingUser != null)
             {
@@ -40,27 +40,32 @@ public class UserController : Controller
                 return View("LogReg", user);
             }
 
+            // Hash the user's password before storing it
             PasswordHasher<User> hasher = new PasswordHasher<User>();
             user.Password = hasher.HashPassword(user, user.Password);
 
+            // Save the user to the database
             _db.Users.Add(user);
             _db.SaveChanges();
 
+            // Set session variable to indicate user is logged in
             HttpContext.Session.SetInt32("userId", user.UserId);
 
+            // Redirect to Dashboard
             return RedirectToAction("Dashboard", new { id = user.UserId });
         }
 
+        // If registration fails due to validation errors, return to registration page with errors
         return View("LogReg", ModelState);
     }
 
-
+    // POST: User Login
     [HttpPost]
-
     public IActionResult Login(LoginUser loginuser)
     {
         if (ModelState.IsValid)
         {
+            // Find user by email in the database
             var userFromDb = _db.Users.Include(w => w.Address).SingleOrDefault(w => w.Email == loginuser.LoginEmail);
             if (userFromDb == null)
             {
@@ -68,6 +73,7 @@ public class UserController : Controller
                 return View("LogReg", loginuser);
             }
 
+            // Verify user's password
             PasswordHasher<LoginUser> hasher = new();
             var result = hasher.VerifyHashedPassword(loginuser, userFromDb.Password, loginuser.LoginPassword);
 
@@ -77,13 +83,14 @@ public class UserController : Controller
                 return View("LogReg", ModelState);
             }
 
+            // Set session variable to indicate user is logged in
             HttpContext.Session.SetInt32("userId", userFromDb.UserId);
             return RedirectToAction("Dashboard", new { id = userFromDb.UserId });
         }
 
+        // If login fails due to validation errors, return to login page with errors
         return View("LogReg", ModelState);
     }
-
 
     // POST: Logout User
     [HttpPost]
@@ -96,9 +103,10 @@ public class UserController : Controller
 
     // GET: Dashboard
     [HttpGet]
-    [SessionCheck]
+    [SessionCheck] // Custom action filter to check if user is logged in
     public IActionResult Dashboard()
     {
+        // Retrieve wash stations and user details for displaying on dashboard
         List<WashStation> washStations = _db.WashStations.Include(w => w.Offers).ToList();
         User user = _db.Users.Include(a => a.Address).FirstOrDefault(u => u.UserId == HttpContext.Session.GetInt32("userId"));
 
@@ -115,15 +123,14 @@ public class UserController : Controller
         }
         else
         {
-          
-            return View("Error"); 
+            // If user or address is null, display error page
+            return View("Error");
         }
     }
 
-
-
+    // GET: View details of a single offer
     [HttpGet]
-    [SessionCheck]
+    [SessionCheck] // Custom action filter to check if user is logged in
     public IActionResult ViewOneOffer(int offerId)
     {
         // Retrieve the offer details
@@ -141,13 +148,15 @@ public class UserController : Controller
             return View(offer);
         }
 
-        return View("Dashboard");
+        // If offer is not found, redirect to Dashboard
+        return RedirectToAction("Dashboard");
     }
- 
 
+    // GET: Update Password View
     [HttpGet]
     public IActionResult UpdatePassword()
     {
+        // Check if user is logged in
         int? userId = HttpContext.Session.GetInt32("userId");
 
         if (userId.HasValue)
@@ -157,14 +166,15 @@ public class UserController : Controller
             return View("UpdatePasswordView", user);
         }
 
+        // If user is not logged in, redirect to Login/Register page
         return RedirectToAction("LogReg");
     }
 
-
-
+    // POST: Update Password
     [HttpPost]
     public IActionResult UpdatePassword(string oldPassword, string newPassword)
     {
+        // Check if user is logged in
         int? userId = HttpContext.Session.GetInt32("userId");
 
         if (userId.HasValue)
@@ -183,7 +193,6 @@ public class UserController : Controller
                 // Save changes to the database
                 _db.SaveChanges();
 
-
                 // Redirect to the dashboard or appropriate page.
                 return RedirectToAction("Dashboard");
             }
@@ -198,12 +207,11 @@ public class UserController : Controller
         return View("UpdatePasswordView");
     }
 
-
-
-
+    // GET: Update Email View
     [HttpGet]
     public IActionResult UpdateEmail()
     {
+        // Check if user is logged in
         int? userId = HttpContext.Session.GetInt32("userId");
 
         if (userId.HasValue)
@@ -219,61 +227,11 @@ public class UserController : Controller
             return View("UpdateEmailView", model);
         }
 
+        // If user is not logged in, redirect to Login/Register page
         return RedirectToAction("LogReg");
     }
 
-
-    [HttpGet]
-    public IActionResult UpdateAddress()
-    {
-        int? userId = HttpContext.Session.GetInt32("userId");
-
-        if (userId.HasValue)
-        {
-            User user = _db.Users
-                .Include(u => u.Address)
-                .FirstOrDefault(u => u.UserId == userId);
-
-            var model = new AddressUpdateViewModel
-            {
-                Street = user.Address.Street,
-                City = user.Address.City,
-                State = user.Address.State,
-                PostalCode = user.Address.PostalCode
-            };
-
-            return View("UpdateAddressView", model);
-        }
-
-        return RedirectToAction("LogReg");
-    }
-
-    [HttpGet]
-    public IActionResult UpdateName()
-    {
-        int? userId = HttpContext.Session.GetInt32("userId");
-
-        if (userId.HasValue)
-        {
-            User user = _db.Users.Find(userId);
-
-            var model = new NameUpdateViewModel
-            {
-                FirstName = user.FirstName,
-                LastName = user.LastName
-            };
-
-            return View("UpdateNameView", model);
-        }
-
-        return RedirectToAction("LogReg");
-    }
-
-
-
-
- 
-
+    // POST: Update Email
     [HttpPost]
     public async Task<IActionResult> UpdateEmail(EmailUpdateViewModel model)
     {
@@ -305,6 +263,35 @@ public class UserController : Controller
         return View("UpdateEmailView", model);
     }
 
+    // GET: Update Address View
+    [HttpGet]
+    public IActionResult UpdateAddress()
+    {
+        // Check if user is logged in
+        int? userId = HttpContext.Session.GetInt32("userId");
+
+        if (userId.HasValue)
+        {
+            User user = _db.Users
+                .Include(u => u.Address)
+                .FirstOrDefault(u => u.UserId == userId);
+
+            var model = new AddressUpdateViewModel
+            {
+                Street = user.Address.Street,
+                City = user.Address.City,
+                State = user.Address.State,
+                PostalCode = user.Address.PostalCode
+            };
+
+            return View("UpdateAddressView", model);
+        }
+
+        // If user is not logged in, redirect to Login/Register page
+        return RedirectToAction("LogReg");
+    }
+
+    // POST: Update Address
     [HttpPost]
     public async Task<IActionResult> UpdateAddress(AddressUpdateViewModel model)
     {
@@ -344,6 +331,31 @@ public class UserController : Controller
         return View("UpdateAddressView", model);
     }
 
+    // GET: Update Name View
+    [HttpGet]
+    public IActionResult UpdateName()
+    {
+        // Check if user is logged in
+        int? userId = HttpContext.Session.GetInt32("userId");
+
+        if (userId.HasValue)
+        {
+            User user = _db.Users.Find(userId);
+
+            var model = new NameUpdateViewModel
+            {
+                FirstName = user.FirstName,
+                LastName = user.LastName
+            };
+
+            return View("UpdateNameView", model);
+        }
+
+        // If user is not logged in, redirect to Login/Register page
+        return RedirectToAction("LogReg");
+    }
+
+    // POST: Update Name
     [HttpPost]
     public async Task<IActionResult> UpdateName(NameUpdateViewModel model)
     {
@@ -375,9 +387,12 @@ public class UserController : Controller
         // If ModelState is not valid, return to the update name view with validation errors.
         return View("UpdateNameView", model);
     }
+
+    // GET: Update Telephone View
     [HttpGet]
     public IActionResult UpdateTelephone()
     {
+        // Check if user is logged in
         int? userId = HttpContext.Session.GetInt32("userId");
 
         if (userId.HasValue)
@@ -392,9 +407,11 @@ public class UserController : Controller
             return View("UpdateTelephoneView", model);
         }
 
+        // If user is not logged in, redirect to Login/Register page
         return RedirectToAction("LogReg");
     }
 
+    // POST: Update Telephone
     [HttpPost]
     public async Task<IActionResult> UpdateTelephone(TelephoneUpdateViewModel model)
     {
@@ -426,9 +443,6 @@ public class UserController : Controller
         return View("UpdateTelephoneView", model);
     }
 
-
-
-
     // Helper method to hash password and save user to the database
     private void HashPasswordAndSaveUser(User user)
     {
@@ -447,4 +461,3 @@ public class UserController : Controller
         _db.SaveChanges();
     }
 }
-
