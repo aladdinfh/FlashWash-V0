@@ -19,6 +19,4 @@ FlashWash is a web platform designed to streamline the booking and communication
 
 Contributions to FlashWash are welcome! If you find any bugs, have suggestions for improvement, or would like to contribute new features, please open an issue or submit a pull request.
 
-## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
